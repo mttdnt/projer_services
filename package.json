@@ -1,0 +1,27 @@
+{
+  "name": "projer_services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mttdnt/projer_services.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mttdnt/projer_services/issues"
+  },
+  "homepage": "https://github.com/mttdnt/projer_services#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.2.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
