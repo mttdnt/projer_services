@@ -13,7 +13,7 @@ const Team = require('./models/Team');
 const Story = require('./models/Story');
 
 const uri = "mongodb://projerUser:projer@cluster0-shard-00-00-llorh.gcp.mongodb.net:27017,cluster0-shard-00-01-llorh.gcp.mongodb.net:27017,cluster0-shard-00-02-llorh.gcp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(uri);
 
