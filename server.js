@@ -12,7 +12,7 @@ const Epic = require('./models/Epic');
 const Team = require('./models/Team');
 const Story = require('./models/Story');
 
-const uri = "mongodb://localhost/prtool";
+const uri = "mongodb://projerUser:projer@cluster0-shard-00-00-llorh.gcp.mongodb.net:27017,cluster0-shard-00-01-llorh.gcp.mongodb.net:27017,cluster0-shard-00-02-llorh.gcp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
 const PORT = 5000;
 
 mongoose.connect(uri);
@@ -31,6 +31,10 @@ app.use('/project', require('./api/projects'));
 app.use('/epic', require('./api/epics'));
 app.use('/story', require('./api/stories'));
 app.use('/team', require('./api/teams'));
+
+app.get("/healthCheck", async (req, res, next) => {
+    res.status(200).send({ masseage: "Hello world" });
+});
 
 
 app.post("/jira/getStories", async (req, res, next) =>  {
