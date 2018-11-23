@@ -19,8 +19,11 @@ mongoose.connect(uri);
 
 app.use((err, req, res, next) => {
     res.status(500).json({ err: err.toString() });
-    res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, db, collection, id");
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, db, collection, id");
+    res.header('Content-Type','application/json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 	next();
 });
 
