@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const request = require('request');
+var cors = require('cors')
 var rp = require('request-promise');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -15,17 +16,7 @@ const Story = require('./models/Story');
 const uri = "mongodb://projerUser:projer@cluster0-shard-00-00-llorh.gcp.mongodb.net:27017,cluster0-shard-00-01-llorh.gcp.mongodb.net:27017,cluster0-shard-00-02-llorh.gcp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(uri);
-
-app.use((err, req, res, next) => {
-    res.status(500).json({ err: err.toString() });
-    // res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, db, collection, id");
-    res.header('Content-Type','application/json');
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-	next();
-});
+app.use(cors())
 
 app.use(bodyParser.json());
 
@@ -80,6 +71,7 @@ app.post("/jira/getStories", async (req, res, next) =>  {
 
 });
 
+mongoose.connect(uri, () => console.log(`DB connected at ${uri}`));
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`)
